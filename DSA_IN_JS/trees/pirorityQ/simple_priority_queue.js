@@ -8,7 +8,7 @@ class PriorityQueue {
         this.sort();
     }
 
-    enqueue() {
+    dequeue() {
         this.values.shift();
     }
 

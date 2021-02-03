@@ -71,6 +71,7 @@ class Bst {
     bfs() {
         let queue = [this.root];
         let visited = [];
+
         function traverse(node) {
             if (node.left) {
                 queue.push(node.left);
@@ -89,11 +90,12 @@ class Bst {
     dfsPreOrder() {
         let visited = [];
         let current = this.root;
+
         function traverse(node) {
             visited.push(node.value);
             if (node.left) traverse(node.left);
             if (node.right) traverse(node.right);
-          }
+        }
         traverse(current);
         return visited.join(" ");
     }
@@ -101,6 +103,7 @@ class Bst {
     dfsPostOrder() {
         let visited = [];
         let current = this.root;
+
         function traverse(node) {
             if (node.left) traverse(node.left);
             if (node.right) traverse(node.right);
@@ -113,6 +116,7 @@ class Bst {
     dfsInOrder() {
         let visited = [];
         let current = this.root;
+
         function traverse(node) {
             if (node.left) traverse(node.left);
             visited.push(node.value);

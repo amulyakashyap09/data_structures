@@ -40,5 +40,5 @@ class Max {
 }
 
 const max = new Max();
-console.log(max.main("123", 2));
+console.log(max.main("193", 2));
 console.log("end!!!");

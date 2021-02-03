@@ -106,8 +106,6 @@ class WeightedGraph {
         //    2. enqueue all vertext with 0/Infinity to Priority Queue
         //    3. add all vertext to previous object, which hold history with value null
 
-        console.log(this.adjacencyList)
-
         for (let vertex in this.adjacencyList) {
             if (vertex === start) {
                 distances[vertex] = 0;
@@ -118,8 +116,6 @@ class WeightedGraph {
             }
             previous[vertex] = null;
         }
-
-        console.log(nodes)
 
         while (nodes.values.length) {
             smallest = nodes.dequeue().val;

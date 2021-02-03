@@ -12,49 +12,30 @@ Also what will be the time complexity?
  * 
  */
 
-function main(A, B, C) {
-
-    const freq = {};
-    const common = [];
-    let tempMap = {};
-
-    for (let item of A) {
-        if (!(item in freq)) {
-            freq[item] = 1;
-        }
-    }
-
-    for (let item of B) {
-        if (!(item in freq)) {
-            tempMap[item] = 1;
-            freq[item] = 1;
-        } else if (item in freq && !(item in tempMap)) {
-            freq[item] = 2;
-        }
-    }
-
-    tempMap = {};
-
-    for (let item of C) {
-        if (!(item in freq)) {
-            freq[item] = 1;
-        } else if (item in freq && !(item in tempMap)) {
-            freq[item] = 3;
-        }
-    }
-
-    tempMap = {};
-
-    for (const property in freq) {
-        if (freq[property] >= 2) {
-            common.push(property);
-        }
-    }
-
-    return { freq, common };
+function optimizedSolution(A, B, C) {
+    let sa = new Set(),
+        sb = new Set(),
+        sc = new Set();
+    A.forEach(a => sa.add(a));
+    B.forEach(b => sb.add(b));
+    C.forEach(c => sc.add(c));
+    let res = new Set();
+    sa.forEach((a) => {
+        if (sb.has(a) || sc.has(a)) res.add(a);
+    })
+    sb.forEach((b) => {
+        if (sa.has(b) || sc.has(b)) res.add(b);
+    })
+    sc.forEach((c) => {
+        if (sa.has(c) || sb.has(c)) res.add(c);
+    })
+    let arr = Array.from(res.values());
+    arr.sort((i, j) => i - j)
+    return arr
 }
 
-A = [2, 5, 3, 2, 8, 1]
-B = [7, 9, 5, 2, 4, 10, 10]
-C = [6, 7, 5, 5, 3, 7]
-console.log(main(A, B, C))
+const A = [2, 5, 3, 2, 8, 1]
+const B = [7, 9, 5, 2, 4, 10, 10]
+const C = [6, 7, 5, 5, 3, 7]
+
+console.log(optimizedSolution(A, B, C));

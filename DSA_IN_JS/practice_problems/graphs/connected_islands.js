@@ -1,6 +1,6 @@
 class ConnectedIslands {
     constructor(arr) {
-        this.grid = arr
+        this.grid = arr;
     }
 
     maxRegion() {
